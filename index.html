@@ -1,0 +1,61 @@
+.<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PulsheN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="phone-screen" id="mainPhoneScreen">
+        <div class="app-page" id="pageChats">
+            <div class="split-layout">
+                
+                <!-- Строгая стрелочка возврата панели -->
+               <button class="open-side-btn" id="openSideBtn" onclick="document.getElementById('sideChatsPanel').style.display='flex'; document.getElementById('openSideBtn').style.display='none'">➔</button>
+
+                <!-- ЛЕВАЯ ПАНЕЛЬ С КРЕСТИКОМ -->
+                <div class="side-panel" id="sideChatsPanel">
+                    <div class="side-header">
+                        <span>PulsheN chats</span>
+                        <button class="close-side-btn" id="closeSideBtn" onclick="document.getElementById('sideChatsPanel').style.display='none'; document.getElementById('openSideBtn').style.display='flex'">✕</button>
+                    </div>
+                    <div class="side-list">
+                        <div class="side-item active">
+                            <div class="side-avatar" style="background:#00c6ff;"></div>
+                            <div class="side-info"><div class="side-name">Пользователь Y</div><div class="side-last-msg">I'm sexy and I know it 😎</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ОКНО ПЕРЕПИСКИ -->
+                <div class="chat-container" id="chatContainer">
+                    <div class="chat-header" id="chatHeader">
+                        <div class="avatar"></div>
+                        <div class="user-info"><div class="username">Пользователь Y</div><div class="status">в сети</div></div>
+                    </div>
+                    <div class="pinned-panel" id="pinnedPanel">
+                        <div><div class="pinned-text-title">Закреплённое сообщение</div><div class="pinned-text-content">Добро пожаловать в PulsheN v2.0! 😉🌟</div></div>
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message incoming">Ты слышишь пульса бит?</div>
+                        <div class="message outgoing">I'm sexy and I know it 😎</div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" placeholder="Cообщение..." class="chat-input" id="messageInput" onkeydown="if(e.key==='Enter')document.getElementById('sendBtn').click()">
+                        <button class="send-btn" id="sendBtn" onclick="if(document.getElementById('messageInput').value.trim()!==''){document.getElementById('chatMessages').insertAdjacentHTML('beforeend','<div class=&quot;message outgoing&quot;>'+document.getElementById('messageInput').value+'</div>');document.getElementById('messageInput').value='';document.getElementById('chatMessages').scrollTop=document.getElementById('chatMessages').scrollHeight;}">➔</button>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        <div class="nav-bar">
+            <div class="nav-item active"><span>Чаты</span></div>
+            <div class="nav-item"><span>Настройки</span></div>
+        </div>
+    </div>
+</body>
+</html>
