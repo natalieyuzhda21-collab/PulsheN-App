@@ -1,0 +1,13 @@
+@media (max-width: 768px) {
+    
+    .chat-container {
+        display: none !important;
+    }
+
+    .side-panel {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-right: none !important;
+    }
+
+} 
