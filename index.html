@@ -58,5 +58,66 @@
             <div class="nav-item"><span>Настройки</span></div>
         </div>
     </div>
+<!-- ПОЛНОЦЕННОЕ СТРОГОЕ МЕНЮ НАСТРОЕК И ОПЦИЙ (БАЗА TG/VK) -->
+<div id="settingsModal" class="settings-modal">
+    <div class="settings-content">
+        <!-- Верхняя панель управления чатом (Иконка звонка и Три точки) -->
+        <div class="chat-options-bar">
+            <button class="icon-btn" id="callBtn" title="Звонок">📞</button>
+            <div class="dropdown">
+                <button class="icon-btn" id="threeDotsBtn" onclick="toggleDropdown()">⋮</button>
+                <div id="dotsDropdown" class="dropdown-content">
+                    <a href="#" onclick="createEntity('private-group')">Создать частную группу</a>
+                    <a href="#" onclick="createEntity('public-group')">Создать публичную группу</a>
+                    <a href="#" onclick="createEntity('private-channel')">Создать частный канал</a>
+                    <a href="#" onclick="createEntity('public-channel')">Создать публичный канал</a>
+                </div>
+            </div>
+        </div>
+
+        <span class="close-settings" onclick="toggleSettings()">&times;</span>
+        <h2>Настройки профиля</h2>
+        
+        <!-- Раздел 1: Аккаунт и Био -->
+        <div class="settings-section">
+            <h3>Аккаунт</h3>
+            <div class="settings-item">
+                <label>Имя пользователя (Никнейм):</label>
+                <input type="text" id="settingsUsername" placeholder="@username">
+            </div>
+            <div class="settings-item">
+                <label>О себе (Био):</label>
+                <textarea id="settingsBio" placeholder="Расскажите о себе..."></textarea>
+            </div>
+        </div>
+
+        <!-- Раздел 2: Кастомизация интерфейса -->
+        <div class="settings-section">
+            <h3>Внешний вид и Неон</h3>
+            <p>Выберите главный цвет приложения:</p>
+            <div class="theme-circles">
+                <div class="circle circle-purple" onclick="changeTheme('#8a2be2')"></div>
+                <div class="circle circle-blue" onclick="changeTheme('#00ffff')"></div>
+                <div class="circle circle-green" onclick="changeTheme('#00ff00')"></div>
+                <div class="circle circle-pink" onclick="changeTheme('#ff007f')"></div>
+                <div class="circle circle-red" onclick="changeTheme('#ff0000')"></div>
+            </div>
+        </div>
+
+        <!-- Раздел 3: Конфиденциальность (Строгое выражение) -->
+        <div class="settings-section">
+            <h3>Безопасность и конфиденциальность</h3>
+            <div class="settings-item-toggle">
+                <span>Кто видит мою аватарку:</span>
+                <select id="privacyAvatar">
+                    <option value="all">Все пользователи</option>
+                    <option value="contacts">Только контакты</option>
+                    <option value="none">Никто</option>
+                </select>
+            </div>
+            <p class="legal-notice">Политика безопасности: PulsheN обеспечивает сквозное шифрование данных. Номера телефонов и персональные идентификаторы не собираются. Полная анонимность сессии гарантирована.</p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
