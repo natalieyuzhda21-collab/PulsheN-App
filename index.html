@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulse Messenger</title>
+    <!-- Подключаем файл со стилями оформления -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="phone-screen" id="mainPhoneScreen">
+        
+        <!-- 1. СТАРТОВАЯ ЗАСТАВКА (СПЛЕШ-СКРИН) -->
+        <div class="splash-screen" id="splashScreen">
+            <video class="splash-video" autoplay loop muted playsinline><source src="intro.mp4" type="video/mp4"></video>
+            <div class="splash-placeholder">PULSE</div>
+        </div>
+
+        <!-- 2. ЭКРАН ВХОДА И РЕГИСТРАЦИИ -->
+        <div class="auth-screen" id="authScreen">
+            <div class="auth-title">Регистрация в Pulse</div>
+            <input type="text" placeholder="Придумайте никнейм..." class="auth-input" id="nicknameInput">
+            <input type="email" placeholder="Электронная почта..." class="auth-input">
+            <input type="password" placeholder="Пароль..." class="auth-input">
+            <button class="auth-btn" id="registerBtn">Создать аккаунт</button>
+        </div>
+
+        <!-- 3. ГЛАВНЫЙ ЭКРАН ЧАТА -->
+        <div class="chat-container" id="chatContainer">
+            <div class="chat-header" id="chatHeader">
+                <div class="avatar" id="chatAvatar"></div>
+                <div class="user-info"><div class="username" id="displayUsername">Наталья Южда</div><div class="status">в сети минуту назад</div></div>
+                <button class="menu-btn" id="menuBtn">⋮</button>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <button class="menu-item" onclick="alert('Вызов по WebRTC... (В разработке)')">📞 Звонок</button>
+                    <button class="menu-item" id="openMyProfileBtn">🖼️ Профиль</button>
+                    <button class="menu-item" id="openSettingsBtn">⚙️ Настройки</button>
+                    <button class="menu-item danger" onclick="alert('Жалоба отправлена!')">⚠️ Пожаловаться</button>
+                </div>
+            </div>
+            <div class="pinned-panel" id="pinnedPanel">
+                <div><div class="pinned-text-title">📌 Закреплённое сообщение</div><div class="pinned-text-content">Не забудь посмотреть мой кастомный постер in профиле! 😉🌟</div></div>
+                <button class="pinned-close" id="closePinnedBtn">✕</button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message incoming">Ты слышишь пульса бит?</div>
+                <div class="message outgoing">I'm sexy and I know it 😎</div>
+            </div>
+            <div class="chat-input-area" id="inputArea">
+                <button class="voice-btn" onclick="alert('Запись голосового... (В разработке)')">🎤</button>
+                <input type="text" placeholder="Cообщение..." class="chat-input" id="messageInput">
+                <button class="send-btn" id="sendBtn">➔</button>
+            </div>
+        </div>
+
+        <!-- 4. ТВОЙ ПРОФИЛЬ -->
+        <div class="profile-modal" id="myProfileModal">
+            <div class="profile-poster-container">
+                <button class="close-profile-btn" id="closeMyProfileBtn">✕</button>
+                <video class="profile-video-background" autoplay loop muted playsinline><source src="poster.mp4" type="video/mp4"></video>
+                <div class="profile-avatar-container"><video class="profile-avatar-media" autoplay loop muted playsinline><source src="avatar.mp4" type="video/mp4"></video></div>
+            </div>
+            <div class="profile-content">
+                <div class="profile-name">Наталья Южда</div><div class="profile-status-time">была в сети 5 ч. назад</div>
+                <div class="profile-bio">“ I see no evil, I hear no evil, I speak no evil ”</div>
+                <button class="more-info-btn" onclick="alert('Ник: @natalia_yuzhda\nО себе: Разработчик Pulse\nРегистрация: Июль 2026\nСтатус: Premium 👑')">ⓘ Подробнее</button>
+            </div>
+        </div>
+
+        <!-- 5. ПРОФИЛЬ ДРУГА -->
+        <div class="profile-modal" id="friendProfileModal">
+            <div class="profile-poster-container">
+                <button class="close-profile-btn" id="closeFriendProfileBtn">✕</button>
+                <div class="profile-avatar-container" style="background-color: #00c6ff; left: 30px;"></div>
+            </div>
+            <div class="profile-content">
+                <div class="profile-name">Пользователь Y</div><div class="profile-status-time">был в сети 10 мин. назад</div>
+                <div class="profile-bio">“ Здесь будет кастомный постер и статус твоего друга! 🍬 ”</div>
+                <button class="more-info-btn" onclick="alert('Ник: @user_y\nО себе: Тестировщик мессенджера\nСтатус: Обычный')">ⓘ Подробнее</button>
+            </div>
+        </div>
+
+        <!-- 6. ЭКРАН НАСТРОЕК (10 ПУНКТОВ) -->
+        <div class="settings-screen" id="settingsScreen">
+            <div class="settings-header" id="settingsHeader">
+                <button class="settings-back-btn" id="closeSettingsBtn">←</button>
+                <div style="font-size: 18px; font-weight: bold;">Настройки</div>
+            </div>
+            <div class="settings-list">
+                <div class="settings-category">Личные данные</div>
+                <div class="settings-item" onclick="alert('Редактирование профиля')"><span>👤 Мой аккаунт</span></div>
+                <div class="settings-item" onclick="alert('Конфиденциальность настроена')"><span>🔒 Конфиденциальность</span></div>
+                <div class="settings-category">Кастомизация и темы</div>
+                <div class="settings-item" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+                    <span>🎨 Встроенные темы</span>
+                    <div class="themes-container">
+                        <div class="theme-dot active" style="background: #120d24;" onclick="changeTheme('default')"></div>
+                        <div class="theme-dot" style="background: #051a05;" onclick="changeTheme('hacker')"></div>
+                        <div class="theme-dot" style="background: #200515;" onclick="changeTheme('pink')"></div>
+                        <div class="theme-dot" style="background: #051525;" onclick="changeTheme('space')"></div>
+                        <div class="theme-dot" style="background: #000000;" onclick="changeTheme('black')"></div>
+                    </div>
+                </div>
+                <div class="settings-item" onclick="alert('Выберите фото из галереи')"><span>🖼️ Обои чата</span></div>
+                <div class="settings-category">Техническая дребедень</div>
+                <div class="settings-item" onclick="alert('Уведомления включены')"><span>🔔 Уведомления и звуки</span></div>
+                <div class="settings-item" onclick="alert('Режим экономии данных включен!')"><span>💾 Данные и память (Экономия трафика)</span></div>
+                <div class="settings-category">Помощь и инфо</div>
+                <div class="settings-item" onclick="alert('Pulse работает напрямую без VPN и блокирует спам-ботов.')"><span>🚀 Возможности Pulse</span></div>
+                <div class="settings-item" onclick="alert('Связь со службой поддержки открыта')"><span>❓ Помощь и поддержка</span></div>
+                <div class="settings-item" onclick="alert('Политика конфиденциальности: Ваши данные зашифрованы и не собирают номера телефонов.')"><span>📄 Политика конфиденциальности</span></div>
+                <div class="settings-item" onclick="alert('Pulse Messenger v1.0\nРазработчик: Наталья Южда')"><span>ℹ️ О приложении</span></div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Подключаем файл с «мозгом» мессенджера -->
+    <script src="script.js"></script>
+</body>
+</html>
